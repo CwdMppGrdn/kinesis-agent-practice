@@ -2,10 +2,11 @@ resource "aws_ssm_parameter" "example" {
   name  = var.ssm_parameter_name
   type  = "String"
   value = jsonencode({
-    flows = [
+    "cloudwatch.emitMetrics" = true
+    "flows" = [
       {
-        filePattern: "/var/log/messages*",
-        kinesisStream: "${aws_kinesis_firehose_delivery_stream.example.name}"
+        "filePattern": "/var/log/messages*",
+        "kinesisStream": "${aws_kinesis_firehose_delivery_stream.example.name}"
       }
     ]
   })

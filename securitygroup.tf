@@ -1,4 +1,6 @@
 resource "aws_security_group" "example" {
+  vpc_id = aws_vpc.example.id
+  name   = "scg-example"
   ingress {
     from_port   = 22
     to_port     = 22
